@@ -27,6 +27,5 @@ void i2cInit(void)
   GPIO_InitStruct.Alternate = GPIO_AF4_I2C2;
 
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 
 }
 
