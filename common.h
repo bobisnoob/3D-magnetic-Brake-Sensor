@@ -6,6 +6,12 @@
 #define __COMON_H
 
 #include <time.h>
+#include <stdio.h>
+#include <string.h>
+#include "stm32f3xx_hal.h"
+#include "stm32f3_discovery.h"
+#include "stm32f3_discovery_accelerometer.h"
+#include "stm32f3_discovery_gyroscope.h"
 
 
 /* Baud rate for serial port */

@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include "stm32f3xx_hal.h"
-#include "stm32f3_discovery.h"
-#include "stm32f3_discovery_accelerometer.h"
-#include "stm32f3_discovery_gyroscope.h"
+
 
 #include "common.h"
 
@@ -83,7 +78,7 @@ static void SystemClock_Config(void)
 {
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_OscInitTypeDef RCC_OscInitStruct;
-  
+  RCC_PeriphCLKInitTypeDef PeriphClkInit;
   /* Enable HSE Oscillator and activate PLL with HSE as source */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
@@ -103,10 +98,19 @@ static void SystemClock_Config(void)
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;  
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2)!= HAL_OK)
   {
     Error_Handler();
   }
+
+  PeriphClkInit.I2c2ClockSelection = RCC_I2C2CLKSOURCE_SYSCLK;
+  if(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) !=HAL_OK)
+  {
+    
+    printf("Error in I2C clock intialization\n");
+  }
+
 }
 /**
   * @brief  This function is executed in case of error occurrence.

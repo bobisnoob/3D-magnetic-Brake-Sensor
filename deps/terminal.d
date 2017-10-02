@@ -64,4 +64,11 @@ build/terminal.o: terminal.c \
  Drivers/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  Drivers/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
  Drivers/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- usbd_cdc_interface.h common.h
+ usbd_cdc_interface.h common.h \
+ Drivers/BSP/STM32F3-Discovery/stm32f3_discovery_accelerometer.h \
+ Drivers/BSP/STM32F3-Discovery/stm32f3_discovery.h \
+ Drivers/BSP/STM32F3-Discovery/../Components/lsm303dlhc/lsm303dlhc.h \
+ Drivers/BSP/STM32F3-Discovery/../Components/lsm303dlhc/../Common/accelero.h \
+ Drivers/BSP/STM32F3-Discovery/stm32f3_discovery_gyroscope.h \
+ Drivers/BSP/STM32F3-Discovery/../Components/l3gd20/l3gd20.h \
+ Drivers/BSP/STM32F3-Discovery/../Components/l3gd20/../Common/gyro.h

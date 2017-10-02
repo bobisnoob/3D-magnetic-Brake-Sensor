@@ -1,5 +1,5 @@
-build/main.o: main.c Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h \
- stm32f3xx_hal_conf.h \
+build/main.o: main.c common.h \
+ Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h stm32f3xx_hal_conf.h \
  Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rcc.h \
  Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h \
  Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h \
@@ -62,5 +62,4 @@ build/main.o: main.c Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h \
  Drivers/BSP/STM32F3-Discovery/../Components/lsm303dlhc/../Common/accelero.h \
  Drivers/BSP/STM32F3-Discovery/stm32f3_discovery_gyroscope.h \
  Drivers/BSP/STM32F3-Discovery/../Components/l3gd20/l3gd20.h \
- Drivers/BSP/STM32F3-Discovery/../Components/l3gd20/../Common/gyro.h \
- common.h
+ Drivers/BSP/STM32F3-Discovery/../Components/l3gd20/../Common/gyro.h
