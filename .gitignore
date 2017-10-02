@@ -1,0 +1,22 @@
+# ignore object files
+*~
+*.o
+*.core
+*.bin
+*.hex
+*.lst
+*.elf
+*.map
+*.out
+*.dfu
+make_version
+version.c
+deps/*
+tags
+make_version
+make_key
+build_tdmv2_fw/
+build_tdmv2_bootrom/
+build_tdmv3_fw/
+build_tdmv3_bootrom/
+.DS_Store
