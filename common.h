@@ -12,8 +12,9 @@
 #include "stm32f3_discovery.h"
 #include "stm32f3_discovery_accelerometer.h"
 #include "stm32f3_discovery_gyroscope.h"
-
-
+#include <stdlib.h>
+#include <math.h>
+#include <stdint.h>
 /* Baud rate for serial port */
 #define UARTBAUDRATE     38400
 //#define UARTBAUDRATE     9600
@@ -34,7 +35,10 @@
  */
 extern const time_t VersionBuildDate;
 extern const char VersionBuildUser[];
+/* 3D magnetic sensor */
 
+void MagneticSensorTask(void);
+void Init_3DMagneticSensor(void);
 
 /*
  *  Simple table driven parser for a command line interface.
@@ -92,7 +96,11 @@ int TerminalReadNonBlock(uint32_t index,char *c);
 int TerminalReadAnyNonBlock(char *c);
 uint32_t TerminalInputBufferWrite(uint32_t index, char *p, uint32_t len);
 
+/* i2c init */
 
+void i2cInit(void);
+uint32_t MangeticConverstionReady(void);
+extern I2C_HandleTypeDef i2c1;
 /*
  * main.c functions
  */

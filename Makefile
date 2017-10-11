@@ -6,7 +6,7 @@
 
 # C source files for the project
 PROJ_NAME = simple_monitor
-SRCS = main.c i2c.c
+SRCS = main.c i2c.c 3dmagnetic.c
 
 # C to assembly language templates
 SRCS += mycode.s 

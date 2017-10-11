@@ -12,8 +12,6 @@ static void SystemClock_Config(void);
 extern void my_LED_Function(uint8_t);
 int main(int argc, char **argv)
 {
-  uint32_t i;
-  uint8_t accelRc, gyroRc;
   /* Configure the system clock */
   SystemClock_Config();
 
@@ -22,36 +20,18 @@ int main(int argc, char **argv)
   /* Start the Watchdog */
 
 
-  TerminalInit();  /* Initialize UART and USB */
+//  TerminalInit();  /* Initialize UART and USB */
   /* Configure the LEDs... */
-  for(i=0; i<numLEDs; i++) {
-    BSP_LED_Init(LEDs[i]);
-  }
-
-  /* Initialize the pushbutton */
-  BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
-
-  /* Initialize the Accelerometer */
-  accelRc = BSP_ACCELERO_Init();
-  if(accelRc != ACCELERO_OK) {
-    printf("Failed to initialize acceleromter\n");
-    Error_Handler();
-  }
-
-  /* Initialize the Gyroscope */
-  gyroRc = BSP_GYRO_Init();
-  if(gyroRc != GYRO_OK) {
-    printf("Failed to initialize Gyroscope\n");
-    Error_Handler();
-  }
 
   my_Init();
   
+  i2cInit();
+ //Init_3DMagneticSensor();
+
   while(1) {
-   TaskInput();
-    my_Loop();
-	//my_LED_Function(1);
+  TaskInput();
     /* Tickle the watchdog */
+  //  MagneticSensorTask();
   }
 
   return 0;
@@ -104,7 +84,8 @@ static void SystemClock_Config(void)
     Error_Handler();
   }
 
-  PeriphClkInit.I2c2ClockSelection = RCC_I2C2CLKSOURCE_SYSCLK;
+  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_SYSCLK;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C1;
   if(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) !=HAL_OK)
   {
     
@@ -128,7 +109,6 @@ void Error_Handler(void)
 void SysTick_Handler(void)
 {
     HAL_IncTick();
-    my_Tick();
 }
 
 void CmdLED(int mode)
